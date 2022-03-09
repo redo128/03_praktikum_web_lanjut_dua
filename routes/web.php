@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\VideoController;
+use App\Http\Controllers\VideoPage;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,14 +17,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/about', function () {
-    return view('blog.about');
-});
 
-Route::get('/contact', function () {
-    return view('blog.contact');
-});
-
-Route::get('/video', function () {
-    return view('blog.video');
-});
+Route::get('/about', [AboutController::class, 'about'])->name('about');
+Route::get('/contact', [ContactController::class, 'contact'])->name('contact');
+Route::get('/video', [VideoController::class, 'video'])->name('video')->name('video');
+Route::get('/video-page', [VideoPage::class, 'videoPage'])->name('video');
